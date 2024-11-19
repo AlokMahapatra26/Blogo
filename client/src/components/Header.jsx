@@ -69,10 +69,10 @@ function Navbar({ isAuthenticated, userName }) {
             </>
           ) : (
             <Link
-              to="/sign-in"
+              to="/sign-up"
               className="bg-white text-black border border-black px-4 py-2 rounded-md  hover:bg-gray-200 transition "
             >
-              Sign In
+              Sign Up
             </Link>
           )}
         </div>
@@ -132,7 +132,7 @@ function Navbar({ isAuthenticated, userName }) {
               to="/sign-in"
               className="block bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
             >
-              Sign In
+              Sign Up
             </Link>
           )}
         </div>

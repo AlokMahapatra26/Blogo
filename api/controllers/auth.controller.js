@@ -3,9 +3,9 @@ import bcrypt from "bcrypt"
 import { errorHandler } from "../utils/error.js";
 
 export const signup = async (req,res,next) => {
-    const {username , email, password} = req.body;
+    const {name , username , email, password} = req.body;
 
-    if(!username || !email || !password || username === "" || email === "" || password === ""){
+    if(!name || !username || !email || !password || name === "" ||username === "" || email === "" || password === ""){
         next(errorHandler(400 , "All fields are required"))
     }
 
@@ -16,6 +16,7 @@ export const signup = async (req,res,next) => {
         const hashedPassword = await bcrypt.hash(password, saltRounds);
 
         const newUser = new User({
+            name,
             username,
             email,
             password:hashedPassword

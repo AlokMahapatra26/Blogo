@@ -15,7 +15,7 @@ function App() {
   return (
     <>
      <BrowserRouter>
-     <Header isAuthenticated={true} userName={""}/>
+     <Header isAuthenticated={false} userName={""}/>
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/about" element={<About/>}/>
