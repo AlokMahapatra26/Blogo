@@ -1,16 +1,15 @@
 import  User from "../models/user.model.js"
 import bcrypt from "bcrypt"
+import { errorHandler } from "../utils/error.js";
 
-export const signup = async (req,res) => {
+export const signup = async (req,res,next) => {
     const {username , email, password} = req.body;
 
-    try{
+    if(!username || !email || !password || username === "" || email === "" || password === ""){
+        next(errorHandler(400 , "All fields are required"))
+    }
 
-        // Checking if user already exists
-        const existingUser = await User.findOne({ email });
-        if (existingUser) {
-            return res.status(400).json({ message: 'User already exists!' });
-        }
+    try{
 
         // Hash the password
         const saltRounds = 8; // Number of salt rounds for hashing
@@ -23,9 +22,8 @@ export const signup = async (req,res) => {
         });
         await newUser.save();
         res.status(200).json({message : "Signup Successfully"})
-    }catch(err){
-        console.log(err)
-        return res.status(500).json({message: err.message})
+    }catch(error){
+        next(error)
     }
  
 }
