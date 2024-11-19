@@ -13,7 +13,7 @@ function Navbar({ isAuthenticated, userName }) {
   };
 
   return (
-    <nav className="bg-white text-black border border-black">
+    <nav className="bg-white text-black border-b border-black">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="text-2xl font-bold ">
@@ -80,7 +80,7 @@ function Navbar({ isAuthenticated, userName }) {
 
       {/* Mobile Dropdown Menu */}
       {isMenuOpen && (
-        <div className="md:hidden text-black p-4 space-y-4 ">
+        <div className="md:hidden text-black p-4 space-y-4 border-b border-black">
           
           {isAuthenticated ? (
             <>
